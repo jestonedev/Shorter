@@ -6,6 +6,7 @@ Shorter
 GPL
 
 Примеры использования
+===============
 ```PHP
 $shorter = new Shorter();
 $maxLength = 64;
