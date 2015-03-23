@@ -14,52 +14,59 @@ class ShorterTest extends \PHPUnit_Framework_TestCase {
     public function testDictionaryPath()
     {
         $shorter = new Shorter();
-        $this->assertNotEquals($shorter->Dictionary(),null);
+        static::assertNotEquals($shorter->Dictionary(),null);
     }
 
     public function testShorting1()
     {
         $shorter = new Shorter();
-        $this->assertEquals($shorter->Translate('Начальник', 4),'Нач.');
+        static::assertEquals($shorter->Translate('Начальник', 4),'Нач.');
     }
 
     public function testShorting2()
     {
         $shorter = new Shorter();
-        $this->assertEquals($shorter->Translate('Заместитель начальника отдела', 16),'Зам. нач. отдела');
+        static::assertEquals($shorter->Translate('Заместитель начальника отдела', 16),'Зам. нач. отдела');
     }
 
     public function testShorting3()
     {
         $shorter = new Shorter();
-        $this->assertEquals($shorter->Translate('Заместитель начальника отдела', 14),'Зам. нач. отд.');
+        static::assertEquals($shorter->Translate('Заместитель начальника отдела', 14),'Зам. нач. отд.');
     }
 
     public function testShorting4()
     {
         $shorter = new Shorter();
-        $this->assertEquals($shorter->Translate('Заместитель начальника отдела', 10),'Зам. нач.');
+        static::assertEquals($shorter->Translate('Заместитель начальника отдела', 10),'Зам. нач.');
     }
 
     public function testShorting5()
     {
         $shorter = new Shorter();
-        $this->assertEquals($shorter->Translate('Заместитель начальника отдела по администрированию и обеспечению безопасности системных, телекоммуникационных и программно-технических комплексова', 64),
+        static::assertEquals($shorter->Translate('Заместитель начальника отдела по администрированию и обеспечению безопасности системных, телекоммуникационных и программно-технических комплексова', 64),
             'Зам. нач. отд. по адм. и обесп. без. сист. тел. и прогр. компл.');
     }
 
     public function testShorting6()
     {
         $shorter = new Shorter();
-        $this->assertEquals($shorter->Translate('Главный специалист, ответственный секретарь комиссии по делам несовершеннолетних и защите их прав', 64),
+        static::assertEquals($shorter->Translate('Главный специалист, ответственный секретарь комиссии по делам несовершеннолетних и защите их прав', 64),
             'Главн. спец. отв. секр. ком. по дел. несовершен. и защ. их прав');
     }
 
     public function testShorting7()
     {
         $shorter = new Shorter();
-        $this->assertEquals($shorter->Translate('Главный специалист, ответственный секретарь комиссии по делам несовершеннолетних и защите их прав', 200),
+        static::assertEquals($shorter->Translate('Главный специалист, ответственный секретарь комиссии по делам несовершеннолетних и защите их прав', 200),
             'Главный специалист, ответственный секретарь комиссии по делам несовершеннолетних и защите их прав');
+    }
+
+    public function testShorting8()
+    {
+        $shorter = new Shorter();
+        static::assertEquals($shorter->Translate('Заместитель руководителя аппарата администрации города Братска по работе с общественными организациями и политическими партиями', 64),
+            'Зам. рук. аппарата администрации г. Братска по работе');
     }
 }
  
